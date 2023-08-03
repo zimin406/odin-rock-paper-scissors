@@ -44,7 +44,10 @@ function game() {
         rounds = parseInt(prompt("Invalid input. Please input again.\nRounds to play:"));
     }
     for(let i = 0; i < rounds; i++) {
-        const playerSelection = prompt(`Rock, Paper, Scissors! ${i + 1}th Round`).toLowerCase();
+        let playerSelection = prompt(`Rock, Paper, Scissors! ${i + 1}th round`).toLowerCase();
+        while (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
+            playerSelection = prompt(`Invalid input. Please input again.\nRock, Paper, Scissors! ${i + 1}th round`).toLowerCase();
+        }
         const computerSelection = getComputerChoice(); 
         const result = playRound(playerSelection, computerSelection);
         switch(result) {
