@@ -12,9 +12,10 @@ function getComputerChoice () {
     }
 }
 
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return `Tie! You and Computer both selected ${playerSelection}.`;
+        return 0;
     }
     else {
         if (
@@ -22,10 +23,10 @@ function playRound(playerSelection, computerSelection) {
             (playerSelection === "scissors" && computerSelection === "paper") ||
             (playerSelection === "paper" && computerSelection === "rock")
         ) {
-            return `You win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`;
+            return 1;
         }
         else {
-            return `You lose! ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}`;
+            return -1;
         }
     }
 }
@@ -36,12 +37,30 @@ function capitalize (str) {
 }
 
 function game() {
+    let winCount = 0;
+    let loseCount = 0;
     let rounds = parseInt(prompt("Rounds to play:"));
     while(isNaN(rounds)) {
         rounds = parseInt(prompt("Invalid input. Please input again.\nRounds to play:"));
     }
     for(let i = 0; i < rounds; i++) {
-        const playerSelection = prompt(`Rock, Paper, Scissors! ${i + 1}th Round`).toLowerCase(); 
-        console.log(playRound(playerSelection, getComputerChoice()));
+        const playerSelection = prompt(`Rock, Paper, Scissors! ${i + 1}th Round`).toLowerCase();
+        const computerSelection = getComputerChoice(); 
+        const result = playRound(playerSelection, computerSelection);
+        switch(result) {
+            case 1:
+                console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
+                loseCount++;
+                break;
+            case 1:
+                console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
+                winCount++;
+                break;
+            default:
+                console.log(`Tie! You and Computer both selected ${playerSelection}.`);
+        }
     }
+    console.log(`Win: ${winCount} rounds
+Lose: ${loseCount} rounds
+Tie: ${rounds - (winCount + loseCount)} rounds`);  
 }
