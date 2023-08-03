@@ -36,7 +36,10 @@ function capitalize (str) {
 }
 
 function game() {
-    const rounds = parseInt(prompt("How many rounds?"));
+    let rounds = parseInt(prompt("Rounds to play:"));
+    while(isNaN(rounds)) {
+        rounds = parseInt(prompt("Invalid input. Please input again.\nRounds to play:"));
+    }
     for(let i = 0; i < rounds; i++) {
         const playerSelection = prompt(`Rock, Paper, Scissors! ${i + 1}th Round`).toLowerCase(); 
         console.log(playRound(playerSelection, getComputerChoice()));
