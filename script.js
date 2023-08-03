@@ -36,7 +36,8 @@ function capitalize (str) {
 }
 
 function game() {
-    for(let i = 0; i < 5; i++) {
+    const rounds = parseInt(prompt("How many rounds?"));
+    for(let i = 0; i < rounds; i++) {
         const playerSelection = prompt(`Rock, Paper, Scissors! ${i + 1}th Round`).toLowerCase(); 
         console.log(playRound(playerSelection, getComputerChoice()));
     }
