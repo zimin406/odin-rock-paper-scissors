@@ -1,3 +1,8 @@
+body {
+    background-color: #FFF6E0;
+    font-family: "Tahoma", sans-serif;
+}
+
 .button-container {
     display: flex;
     justify-content: center;  
@@ -5,10 +10,21 @@
 }
 
 .button {
-    font-size: 36px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #272829;
     margin-left: 20px;
     margin-right: 20px;
     padding: 16px 30px;
-    border: 2px solid black;
+    border: 8px solid #61677A;
     border-radius: 10px;
+    background-color: #D8D9DA;
+}
+
+h1.h1-heading {
+    text-align: center;
+    margin-top: 40px;
+    color: #272829;
+    font-weight:bold;
+    font-size: 40px;
 }
